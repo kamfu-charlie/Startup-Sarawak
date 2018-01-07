@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="https://v4-alpha.getbootstrap.com/examples/album/album.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<style>
+.card img{
+    max-width: 200px;
+    max-height: 200px;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+#moderatorList .card img{
+    width: 150px;
+    height: 150px;
+    border-radius: 90px;
+}
+</style>
+</head>
+<body>
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Startup Sarawak</h1>
+        <p class="lead text-muted">Startups and Social Enterprise that aim to transform local society.</p>
+        <p class="text-muted">
+        </p>
+        <p>
+            <a href="https://goo.gl/forms/qFyquYXoXFyjo5k82" class="btn btn-primary">Submit yours Startup</a>
+            <a href="email:contact@kamfu.org" class="btn btn-secondary">Contact Us</a>
+        </p>
+      </div>
+    </section>
+    <section>
+        <div class="album text-muted">
+          <div class="container-fluid">
+            <div class="row" id="startupList"></div>
+          </div>
+        </div>
+    </section>
+    <section class="jumbotron text-center">
+        <div class="container-fluid">
+            <h1 class="jumbotron-heading">Moderators</h1>
+            <div class="row" id="moderatorList"></div>
+        </div>
+    </section>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Powered by Magic Sarawak Community</p>
+        <p>Borneo 744, Jalan Semangat, Bintawa Industrial Estate, 93450 Kuching, Sarawak.</p>
+      </div>
+    </footer>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    renderModeratorList();
+    setTimeout(function(){
+        renderStartupList();
+    }, 1000);
+});
+function renderStartupList()
+{
+    // https://docs.google.com/spreadsheets/d/1-kJ0Xm3yXuy621rgQF3wfHwj1U-cbuSAJyiXG1cZpDY/
+    // ID of the Google Spreadsheet
+    var spreadsheetID = "1-kJ0Xm3yXuy621rgQF3wfHwj1U-cbuSAJyiXG1cZpDY";
+    var sheetID = "ofso59q"; // Get from XML retrieve
+    var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/" + sheetID + "/public/values?alt=json";
+    
+    jQuery.getJSON(url, function(data) {
+        var entry = data.feed.entry;
+        jQuery(entry).each(function()
+        {
+        console.log( this );
+            var 
+            startupcontactemail = this.gsx$startupcontactemail.$t,
+            listoffounders = this.gsx$listoffounders.$t,
+            
+            startupname = this.gsx$startupname.$t,
+            startupslogan = this.gsx$startupslogan.$t,
+            startupwebsitecanbefborigifnowebsite = this.gsx$startupwebsitecanbefborigifnowebsite.$t,
+            whichcategoryyoursstartupfitin = this.gsx$whichcategoryyoursstartupfitin.$t,
+            startuplogoID = getParameterByName('id', this.gsx$startuplogo.$t),
+            startuplogolink = "https://drive.google.com/thumbnail?id=" + startuplogoID,
+            constructedhtml = '';
+            
+            constructedhtml += '<div class="card">';
+                constructedhtml += '<h3>'+startupname+'</h3>';
+                constructedhtml += '<p class="card-text">'+listoffounders+'</p>';
+                constructedhtml += '<img src="'+startuplogolink+'" />';
+                constructedhtml += '<p class="card-text">'+startupslogan+'</p>';
+                constructedhtml += '<p class="card-text">'+whichcategoryyoursstartupfitin+'</p>';
+                constructedhtml += '<p>';
+                    constructedhtml += '<a href="'+startupwebsitecanbefborigifnowebsite+'" class="btn btn-primary">Visit the Site</a>';
+                    constructedhtml += '<a href="email:'+startupcontactemail+'" class="btn btn-secondary float-right">Email</a>';
+                constructedhtml += '</p>';
+            constructedhtml += '</div>';
+            
+            jQuery('#startupList').append(constructedhtml);
+        });
+    });
+}
+function renderModeratorList()
+{
+// https://docs.google.com/spreadsheets/d/1QIkOaouQPwc_P3PGXkXsccU_f9NZiqhYazqjMhGRuH4/edit?usp=sharing
+    // ID of the Google Spreadsheet
+    var spreadsheetID = "1QIkOaouQPwc_P3PGXkXsccU_f9NZiqhYazqjMhGRuH4";
+    var sheetID = "default"; // Get from XML retrieve
+    var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/" + sheetID + "/public/values?alt=json";
+    
+    jQuery.getJSON(url, function(data) {
+        var entry = data.feed.entry;
+        jQuery(entry).each(function()
+        {
+        console.log( this );
+            var 
+            jobtitle = this.gsx$jobtitle.$t,
+            moderatorname = this.gsx$moderatorname.$t,
+            quoteoftheday = this.gsx$quoteoftheday.$t,
+            profileimageID = getParameterByName('id', this.gsx$profileimage.$t),
+            profileimagelink = "https://drive.google.com/thumbnail?id=" + profileimageID,
+            constructedhtml = '';
+            
+            constructedhtml += '<div class="card">';
+                constructedhtml += '<p class="text-center"></p><img src="'+profileimagelink+'" /></p>';
+                constructedhtml += '<h5>'+moderatorname+'</h5>';
+                constructedhtml += '<p class="card-text text-muted">'+quoteoftheday+'</p>';
+                constructedhtml += '<p class="card-text">'+jobtitle+'</p>';
+            constructedhtml += '</div>';
+            
+            jQuery('#moderatorList').append(constructedhtml);
+        });
+    });
+}
+function getParameterByName(name, url)
+{
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+</script>
+</body></html>
