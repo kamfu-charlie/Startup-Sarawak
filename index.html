@@ -7,9 +7,9 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
     
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://getbootstrap.com/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="https://v4-alpha.getbootstrap.com/examples/album/album.css">
+    <link rel="stylesheet" href="https://v4-alpha.getbootstrap.com/examples/album/album.css" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -29,43 +29,77 @@ html, body{
     height: 150px;
     border-radius: 90px;
 }
+.bg-dark
+{
+    background: #333;
+}
 </style>
 </head>
 <body>
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">Startup Sarawak</h1>
-        <p class="lead text-muted">Startups and Social Enterprise that aim to transform local society.</p>
+        <p class="lead text-muted">Startups and Social Enterprises that aim to transform local society.</p>
         <p class="text-muted">
         </p>
         <p>
-            <a href="https://goo.gl/forms/qFyquYXoXFyjo5k82" class="btn btn-primary">Submit yours Startup</a>
-            <a href="email:contact@kamfu.org" class="btn btn-secondary">Contact Us</a>
+            <a href="https://goo.gl/forms/7xcHIVoEw0g1M8hz2" class="btn btn-primary">Submit yours Startup</a>
+            <a href="https://goo.gl/forms/4iKR5xNfdtU8E9JL2" class="btn btn-secondary">Have Suggestion?</a>
         </p>
       </div>
     </section>
-    <section>
-        <div class="album text-muted">
-          <div class="container-fluid">
-            <div class="row" id="startupList"></div>
-          </div>
+    <section class="text-center">
+        <div class="container-fluid">
+            <div class="album text-muted">
+                <h1 class="jumbotron-heading" style="margin-bottom: 20px;">Startups & Social Enterprises</h1>
+                <div class="row" id="startupList"></div>
+            </div>
         </div>
     </section>
     <section class="jumbotron text-center">
         <div class="container-fluid">
-            <h1 class="jumbotron-heading">Moderators</h1>
+            <h1 class="jumbotron-heading">Contributors & Moderators</h1>
             <div class="row" id="moderatorList"></div>
         </div>
     </section>
     <footer class="text-muted">
       <div class="container">
         <p class="float-right">
-          <a href="#">Back to top</a>
+          <a href="#">Back to Top</a>
         </p>
         <p>Powered by Magic Sarawak Community</p>
         <p>Borneo 744, Jalan Semangat, Bintawa Industrial Estate, 93450 Kuching, Sarawak.</p>
       </div>
     </footer>
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">
+                Startup Sarawak is a weekend mini project contributed by Tang Hoong, 10 hours of coding, using Github and Google technologies to build it. (Last Update: 7 Jan, 2018 4:43pm)
+              </p>
+            </div>
+            <div class="col-sm-4 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="https://www.facebook.com/charlie.tang.hoong" class="text-white">Follow on Facebook</a></li>
+                <li><a href="email:th@kamfu.org" class="text-white">Email me</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand">Startup Sarawak</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
 <script type="text/javascript">
 jQuery(document).ready(function(){
     renderModeratorList();
@@ -92,21 +126,27 @@ function renderStartupList()
             
             startupname = this.gsx$startupname.$t,
             startupslogan = this.gsx$startupslogan.$t,
-            startupwebsitecanbefborigifnowebsite = this.gsx$startupwebsitecanbefborigifnowebsite.$t,
+            startedsincewhen = this.gsx$startedsincewhen.$t,
+            socialenterprise = this.gsx$socialenterprise.$t,
             whichcategoryyoursstartupfitin = this.gsx$whichcategoryyoursstartupfitin.$t,
+            startupwebsitecanbefborigifnowebsite = this.gsx$startupwebsitecanbefborigifnowebsite.$t,
             startuplogoID = getParameterByName('id', this.gsx$startuplogo.$t),
             startuplogolink = "https://drive.google.com/thumbnail?id=" + startuplogoID,
             constructedhtml = '';
             
             constructedhtml += '<div class="card col-12 col-sm-4">';
-                constructedhtml += '<h3>'+startupname+'</h3>';
-                constructedhtml += '<p class="card-text">'+listoffounders+'</p>';
-                constructedhtml += '<img src="'+startuplogolink+'" />';
-                constructedhtml += '<p class="card-text">'+startupslogan+'</p>';
-                constructedhtml += '<p class="card-text">'+whichcategoryyoursstartupfitin+'</p>';
-                constructedhtml += '<p>';
-                    constructedhtml += '<a href="'+startupwebsitecanbefborigifnowebsite+'" class="btn btn-primary">Visit the Site</a>';
-                    constructedhtml += '<a href="email:'+startupcontactemail+'" class="btn btn-secondary float-right">Email</a>';
+                constructedhtml += '<h3 class="text-center">'+startupname+'</h3>';
+                constructedhtml += '<p class="text-center"><img src="'+imgLoad(startuplogolink)+'" style="width:200px;height:200px;" /></p>';
+                constructedhtml += '<p class="card-text mt-1 text-center ">'+startupslogan+'</p>';
+                constructedhtml += '<p class="card-text text-center">'+ui_splitBlock(listoffounders)+'</p>';
+                constructedhtml += '<p class="card-text text-center">'+ui_splitBlock(whichcategoryyoursstartupfitin)+'</p>';
+                if( socialenterprise == 'Yes' ){
+                    constructedhtml += '<p class="card-text text-center"><span class="d-inline bg-warning text-white" style="padding:4px; margin:2px;border-radius:3px;">Social Enterprise</span></p>';
+                }
+                constructedhtml += '<p class="card-text text-center"><span class="d-inline bg-info text-white" style="padding:4px; margin:2px;border-radius:3px;">Started since ' + startedsincewhen + '</span></p>';
+                constructedhtml += '<p class="text-center">';
+                    constructedhtml += '<a href="'+startupwebsitecanbefborigifnowebsite+'" class="btn btn-primary" style="margin-right:5px;">Visit the Site</a>';
+                    constructedhtml += '<a href="email:'+startupcontactemail+'" class="btn btn-secondary">Email</a>';
                 constructedhtml += '</p>';
             constructedhtml += '</div>';
             
@@ -136,7 +176,7 @@ function renderModeratorList()
             constructedhtml = '';
             
             constructedhtml += '<div class="card col-12 col-sm-4">';
-                constructedhtml += '<p class="text-center"></p><img src="'+profileimagelink+'" /></p>';
+                constructedhtml += '<p class="text-center"><img src="'+profileimagelink+'" /></p>';
                 constructedhtml += '<h5>'+moderatorname+'</h5>';
                 constructedhtml += '<p class="card-text text-muted">'+quoteoftheday+'</p>';
                 constructedhtml += '<p class="card-text">'+jobtitle+'</p>';
@@ -155,6 +195,26 @@ function getParameterByName(name, url)
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+function imgLoad(image_url)
+{
+    return image_url;
+    jQuery.get(image_url)
+    .done(function() { 
+        // Do something now you know the image exists.
+    }).fail(function() { 
+        // Image doesn't exist - do something else.
+        //return '';
+    });
+}
+function ui_splitBlock(items)
+{
+    var item = '',itemArray = items.split(',');
+    for (i = 0; i < itemArray.length; i++) { 
+        item += '<span class="d-inline bg-success text-white" style="padding:4px; margin:2px;border-radius:3px;">' + itemArray[i] + '</span>';
+    }
+    console.log('item',item);
+    return item;
 }
 </script>
 </body></html>
