@@ -14,6 +14,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <style>
+html, body{
+    min-width: 320px;
+}
 .card img{
     max-width: 200px;
     max-height: 200px;
@@ -95,7 +98,7 @@ function renderStartupList()
             startuplogolink = "https://drive.google.com/thumbnail?id=" + startuplogoID,
             constructedhtml = '';
             
-            constructedhtml += '<div class="card">';
+            constructedhtml += '<div class="card col-12 col-sm-4">';
                 constructedhtml += '<h3>'+startupname+'</h3>';
                 constructedhtml += '<p class="card-text">'+listoffounders+'</p>';
                 constructedhtml += '<img src="'+startuplogolink+'" />';
@@ -132,7 +135,7 @@ function renderModeratorList()
             profileimagelink = "https://drive.google.com/thumbnail?id=" + profileimageID,
             constructedhtml = '';
             
-            constructedhtml += '<div class="card">';
+            constructedhtml += '<div class="card col-12 col-sm-4">';
                 constructedhtml += '<p class="text-center"></p><img src="'+profileimagelink+'" /></p>';
                 constructedhtml += '<h5>'+moderatorname+'</h5>';
                 constructedhtml += '<p class="card-text text-muted">'+quoteoftheday+'</p>';
