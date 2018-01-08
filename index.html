@@ -129,7 +129,7 @@ function renderStartupList()
             startedsincewhen = this.gsx$startedsincewhen.$t,
             socialenterprise = this.gsx$socialenterprise.$t,
             whichcategoryyoursstartupfitin = this.gsx$whichcategoryyoursstartupfitin.$t,
-            startupwebsitecanbefborigifnowebsite = this.gsx$startupwebsitecanbefborigifnowebsite.$t,
+            startupwebsite = this.gsx$startupwebsite.$t,
             startuplogoID = getParameterByName('id', this.gsx$startuplogo.$t),
             startuplogolink = "https://drive.google.com/thumbnail?id=" + startuplogoID,
             constructedhtml = '';
@@ -145,7 +145,7 @@ function renderStartupList()
                 }
                 constructedhtml += '<p class="card-text text-center"><span class="d-inline bg-info text-white" style="padding:4px; margin:2px;border-radius:3px;">Started since ' + startedsincewhen + '</span></p>';
                 constructedhtml += '<p class="text-center">';
-                    constructedhtml += '<a href="'+startupwebsitecanbefborigifnowebsite+'" class="btn btn-primary" style="margin-right:5px;">Visit the Site</a>';
+                    constructedhtml += '<a href="'+startupwebsite+'" class="btn btn-primary" style="margin-right:5px;">Visit the Site</a>';
                     constructedhtml += '<a href="mailto:'+startupcontactemail+'" class="btn btn-secondary">Email</a>';
                 constructedhtml += '</p>';
             constructedhtml += '</div>';
