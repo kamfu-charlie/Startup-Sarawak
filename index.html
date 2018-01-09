@@ -33,6 +33,14 @@ html, body{
 {
     background: #333;
 }
+#iframe_calendar
+{
+    border-width: 0;
+    width: 100%;
+    min-height: 600px;
+    height: 100%;
+    margin: 0 auto;
+}
 </style>
 </head>
 <body>
@@ -108,16 +116,22 @@ html, body{
     </header-->
 <script type="text/javascript">
 jQuery(document).ready(function(){
-    renderModeratorList();
-    renderEventList();
+    
+    setTimeout(function(){
+        renderEventList();
+    }, 2000);
     setTimeout(function(){
         renderStartupList();
+    }, 3000);
+    setTimeout(function(){
+        renderModeratorList();
     }, 1000);
 });
 function renderEventList()
 {
     // https://calendar.google.com/calendar?cid=Z2FkdG8zZGFxZHBkZXVwNzNybGExM3NobmtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
-    var html = '<iframe src="https://calendar.google.com/calendar/embed?title=Startup%20Sarawak&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;height=600&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;ctz=Asia%2FKuala_Lumpur" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>';
+    var html = '<iframe src="https://calendar.google.com/calendar/embed?title=Startup%20Sarawak&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;height=600&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;ctz=Asia%2FKuala_Lumpur" id="iframe_calendar" width="800" height="600" frameborder="0" scrolling="no"></iframe>';
+        //html += '<a target="_blank" href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=MTNzMHRqZmM0NmhxMGJkazYyZDQyZ3VkbHAgZ2FkdG8zZGFxZHBkZXVwNzNybGExM3NobmtAZw&amp;tmsrc=gadto3daqdpdeup73rla13shnk%40group.calendar.google.com"><img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en.gif"></a>';
     document.getElementById('eventList').innerHTML = html;
 }
 function renderStartupList()
