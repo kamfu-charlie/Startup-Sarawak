@@ -43,8 +43,8 @@ html, body{
         <p class="text-muted">
         </p>
         <p>
-            <a href="https://goo.gl/forms/7xcHIVoEw0g1M8hz2" class="btn btn-primary" style="margin:5px;">Submit yours Startup</a>
-            <a href="https://goo.gl/forms/4iKR5xNfdtU8E9JL2" class="btn btn-secondary" style="margin:5px;">Have Suggestion?</a>
+            <a href="https://goo.gl/forms/7xcHIVoEw0g1M8hz2" class="btn btn-primary" style="margin:5px;" target="blank" >Submit yours Startup</a>
+            <a href="https://goo.gl/forms/4iKR5xNfdtU8E9JL2" class="btn btn-secondary" style="margin:5px;" target="blank">Have Suggestion?</a>
         </p>
       </div>
     </section>
@@ -54,6 +54,12 @@ html, body{
                 <h1 class="jumbotron-heading" style="margin-bottom: 20px;">Startups & Social Enterprises</h1>
                 <div class="row" id="startupList"></div>
             </div>
+        </div>
+    </section>
+    <section class="jumbotron text-center">
+        <div class="container-fluid">
+            <h1 class="jumbotron-heading">Incoming Events</h1>
+            <div class="row" id="eventList"></div>
         </div>
     </section>
     <section class="jumbotron text-center">
@@ -103,10 +109,17 @@ html, body{
 <script type="text/javascript">
 jQuery(document).ready(function(){
     renderModeratorList();
+    renderEventList();
     setTimeout(function(){
         renderStartupList();
     }, 1000);
 });
+function renderEventList()
+{
+    // https://calendar.google.com/calendar?cid=Z2FkdG8zZGFxZHBkZXVwNzNybGExM3NobmtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
+    var html = '<iframe src="https://calendar.google.com/calendar/embed?title=Startup%20Sarawak&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;height=600&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;ctz=Asia%2FKuala_Lumpur" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>';
+    document.getElementById('eventList').innerHTML = html;
+}
 function renderStartupList()
 {
     // https://docs.google.com/spreadsheets/d/1-kJ0Xm3yXuy621rgQF3wfHwj1U-cbuSAJyiXG1cZpDY/
@@ -145,7 +158,7 @@ function renderStartupList()
                 }
                 constructedhtml += '<p class="card-text text-center"><span class="d-inline bg-info text-white" style="padding:4px; margin:2px;border-radius:3px;">Started since ' + startedsincewhen + '</span></p>';
                 constructedhtml += '<p class="text-center">';
-                    constructedhtml += '<a href="'+startupwebsite+'" class="btn btn-primary" style="margin-right:5px;">Visit the Site</a>';
+                    constructedhtml += '<a href="'+startupwebsite+'" class="btn btn-success" target="blank" style="margin-right:5px;">Visit the Site</a>';
                     constructedhtml += '<a href="mailto:'+startupcontactemail+'" class="btn btn-secondary">Email</a>';
                 constructedhtml += '</p>';
             constructedhtml += '</div>';
@@ -201,19 +214,12 @@ function getParameterByName(name, url)
 function imgLoad(image_url)
 {
     return image_url;
-    jQuery.get(image_url)
-    .done(function() { 
-        // Do something now you know the image exists.
-    }).fail(function() { 
-        // Image doesn't exist - do something else.
-        //return '';
-    });
 }
 function ui_splitBlock(items)
 {
     var item = '',itemArray = items.split(',');
     for (i = 0; i < itemArray.length; i++) { 
-        item += '<span class="d-inline bg-success text-white" style="padding:4px; margin:2px;border-radius:3px;">' + itemArray[i] + '</span>';
+        item += '<span class="d-inline bg-success text-white" style="padding:4px; margin:5px;border-radius:3px;">' + itemArray[i] + '</span>';
     }
     console.log('item',item);
     return item;
