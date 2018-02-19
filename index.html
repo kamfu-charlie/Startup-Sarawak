@@ -66,7 +66,7 @@ html, body{
     </section>
     <section class="jumbotron text-center">
         <div class="container-fluid">
-            <h1 class="jumbotron-heading">Startups</h1>
+            <!--h1 class="jumbotron-heading">Startups</h1-->
             <div class="row">
                     <div class="row" id="startupList"></div>
                     <div class="row" id="eventList"></div>
@@ -113,11 +113,11 @@ html, body{
     </section>
     <footer class="text-muted bg-dark">
       <div class="container">
-        <p class="float-right">
+        <!--p class="float-right">
           <a href="#">Top</a>
-        </p>
-        <p>From Community to Community</p>
-        <p>StartupSarawak.com</p>
+        </p-->
+        <p class="text-center">From Community to Community</p>
+        <p class="text-center">Startup Sarawak</p>
       </div>
     </footer>
 <script type="text/javascript">
@@ -170,14 +170,15 @@ function renderStartupList()
             constructedhtml += '<div class="card col-12 col-sm-3">';
                 //constructedhtml += '<h3 class="text-center">'+startupname+'</h3>';
                 constructedhtml += '<p class="text-center"><a href="'+startupwebsite+'"target="blank"><img src="'+imgLoad(startuplogolink)+'" style="width:100px;height:100px;" /></a></p>';
-                constructedhtml += '<p class="card-text mt-1 text-center "><strong>'+startupname+'</strong> '+startupslogan+' <a href="mailto:'+startupcontactemail+'">Email</a></p>';
+                constructedhtml += '<p class="card-text mt-1 text-center "><strong>'+startupname+'</strong></p>';
+                constructedhtml += '<p class="card-text mt-1 text-center ">'+startupslogan+' <a href="mailto:'+startupcontactemail+'">Email</a></p>';
                 //constructedhtml += '<p class="card-text mt-1 text-center "><strong>'+startupname+'</strong> '+startupslogan+' Started since '+startedsincewhen+'. <a href="mailto:'+startupcontactemail+'">Email</a></p>';
                 
                 //constructedhtml += '<p class="card-text mt-1 text-center ">'+startupslogan+'</p>';
                 // constructedhtml += '<p class="card-text text-center">'+ui_splitBlock(listoffounders)+'</p>';
                 // constructedhtml += '<p class="card-text text-center">'+ui_splitBlock(whichcategoryyoursstartupfitin)+'</p>';
                 if( socialenterprise == 'Yes' ){
-                    constructedhtml += '<p class="card-text text-center"><span class="d-inline bg-warning text-white" style="padding:4px; margin:2px;border-radius:3px;">Social Enterprise</span></p>';
+                    //constructedhtml += '<p class="card-text text-center"><span class="d-inline bg-warning text-white" style="padding:4px; margin:2px;border-radius:3px;">Social Enterprise</span></p>';
                 }
                 //constructedhtml += '<p class="card-text text-center"><span class="d-inline bg-info text-white" style="padding:4px; margin:2px;border-radius:3px;">Started since ' + startedsincewhen + '</span></p>';
                 // constructedhtml += '<p class="text-center">';
@@ -212,11 +213,11 @@ function renderModeratorList()
             profileimagelink = "https://drive.google.com/thumbnail?id=" + profileimageID,
             constructedhtml = '';
             
-            constructedhtml += '<div class="card col-12 col-sm-3">';
+            constructedhtml += '<div class="card col-12 col-sm-4">';
                 constructedhtml += '<p class="text-center"><img src="'+profileimagelink+'" /></p>';
                 constructedhtml += '<p class="bold">'+moderatorname+'</p>';
-                constructedhtml += '<p class="card-text">'+roletitle+'</p>';
-                constructedhtml += '<p class="card-text text-muted">'+quoteoftheday+'</p>';
+                //constructedhtml += '<p class="card-text">'+roletitle+'</p>';
+                //constructedhtml += '<p class="card-text text-muted">'+quoteoftheday+'</p>';
                 constructedhtml += '<p class="card-text text-muted">'+jobtitle+'</p>';
             constructedhtml += '</div>';
             
@@ -244,7 +245,7 @@ function ui_splitBlock(items)
     for (i = 0; i < itemArray.length; i++) { 
         item += '<span class="d-inline bg-success text-white" style="padding:4px; margin:5px;border-radius:3px;">' + itemArray[i] + '</span>';
     }
-    console.log('item',item);
+    //console.log('item',item);
     return item;
 }
 </script>
