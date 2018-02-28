@@ -47,6 +47,11 @@ html, body{
     height: 100%;
     margin: 0 auto;
 }
+.jumbotron
+{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
 </style>
 </head>
 <body>
@@ -56,17 +61,16 @@ html, body{
         <p class="lead text-muted">Startups that aim to transform local society.</p>
         <p class="text-muted"></p>
         <p>
-            <a href="https://goo.gl/forms/7xcHIVoEw0g1M8hz2" class="btn btn-primary" style="margin:5px;" target="blank" >List your Startup</a>
-            <a href="https://goo.gl/forms/4iKR5xNfdtU8E9JL2" class="btn btn-secondary" style="margin:5px;" target="blank">Have Suggestion?</a>
-        </p>
-        <p>
-            <a href="https://www.facebook.com/groups/startupsarawak/" class="btn btn-primary" style="margin:5px;" target="blank" >Join Our Community</a>
+            <a href="https://goo.gl/forms/7xcHIVoEw0g1M8hz2" class="btn btn-primary btn-block" style="margin:5px;" target="blank" >List your Startup</a>
+            <a href="https://www.facebook.com/groups/startupsarawak/" class="btn btn-info btn-block" style="margin:5px;" target="blank" >Join Our Community</a>
+            <a href="http://m.me/StartupSarawak" class="btn btn-secondary" style="margin:5px;" target="blank">Have Suggestion?</a>
+            <a href="https://fb.me/StartupSarawak" class="btn btn-secondary" style="margin:5px;" target="blank" >News Page</a>
         </p>
       </div>
     </section>
     <section class="jumbotron text-center">
         <div class="container-fluid">
-            <!--h1 class="jumbotron-heading">Startups</h1-->
+            <h1 class="jumbotron-heading">Startups</h1>
             <div class="row">
                     <div class="row" id="startupList"></div>
                     <div class="row" id="eventList"></div>
@@ -128,10 +132,10 @@ jQuery(document).ready(function(){
     }, 2000);
     setTimeout(function(){
         renderStartupList();
-    }, 3000);
+    }, 1000);
     setTimeout(function(){
         renderModeratorList();
-    }, 1000);
+    }, 3000);
 });
 function renderEventList()
 {
